@@ -1,0 +1,52 @@
+﻿@model List<MyLibrary.Application.GenreOparation.Queries.GetGenres.GenresViewModel>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Current = "Genre";
+
+}
+<div class="container ">
+
+    <table class="table table-striped table-bordered table-dark">
+            <thead>
+                <tr>
+                    <th><b>Name</b></th>
+                <th><b>Operations</b></th>
+
+                 
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var genres in Model)
+                {
+                    <tr>
+
+                    <td>@genres.Name</td>
+
+
+
+                    <td class="text-center">
+                        <a class="btn btn-danger" href="">
+                            <i class="fa-solid fa-trash"></i>                            <span>Delete</span>
+                        </a>
+                        @{
+
+                        }
+                    </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    <div class="d-flex justify-content-md-between">
+        <td class="text-center">
+            <a class="btn btn-primary" href="/Genres/AddGenre">
+                <span>Add Genre</span>
+            </a>
+        </td>
+
+    </div>
+
+    </div>

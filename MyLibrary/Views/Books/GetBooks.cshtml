@@ -1,0 +1,54 @@
+﻿@model List<MyLibrary.Application.BookOparation.Queries.GetBooks.BooksViewModel>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Current = "Book";
+
+}
+<div class="container">
+  
+    <div class="container">
+
+        <div class="row row-cols-1  row-cols-sm-2 row-cols-md-3 row-cols-lg-4  g-3">
+
+                @foreach (var book in Model)
+                {
+            <div class="col">
+                <div class="card shadow-none bg-dark h-100 ">
+							<img class="bd-placeholder-img card-img-top align-self-center m-3 " src="@book.Image" style="height:90%; width:90%" />
+                    <div class="card-body bg-dark text-white">
+                        <h5 class="card-title text-nowrap text-truncate">@book.Title</h5>
+                            <div class=" text-nowrap text-truncate">
+                                <i class="fa-solid fa-user fa-sm me-1"></i>
+                                <h7 >Author: @book.Author</h7>
+                            </div>
+
+                            <div class=" text-nowrap text-truncate">
+                                <i class="fa-solid fa-book fa-sm me-1"></i>
+                                <h7 >Genre: @book.Genre</h7>
+                                </div>
+
+                            <divclass ="text-nowrap text-truncate">
+                                <h7 >Page Count: @book.PageCount Sayfa</h7>
+                                </divclass>
+                            
+
+                        <div class="d-flex justify-content-between align-items-center m-2">
+                            <div class="btn-group">
+                                    <h7>@book.PublishDate.Date.ToString("d")</h7>
+                            </div>
+                            <form asp-action="DeleteBook">
+                                <input type="hidden" asp-for="@book.Title" />
+                                <input type="submit" value="Delete" class="btn btn-danger" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+          
+        </div>
+    </div>
+    
+</div>

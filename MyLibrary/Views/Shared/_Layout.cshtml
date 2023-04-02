@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]MyLibrary</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/sidebars.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MyLibrary.styles.css" asp-append-version="true" />
+
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>My Library</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="@(ViewBag.Current == "Book" ? "active" : "")">
+                    <a id="Book" href="#BookSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Book</a>
+                    <ul class="collapse list-unstyled" id="BookSubmenu">
+                        <li>
+                            <a href="/Books/GetBooks">Books</a>
+                        </li>
+                        <li>
+                            <a href="/Books/AddBook">Add Book</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="@(ViewBag.Current == "Author" ? "active" : "")">
+                    <a id="Author" href="#AuthorSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Author</a>
+                    <ul class="collapse list-unstyled" id="AuthorSubmenu">
+                        <li>
+                            <a href="/Authors/GetAuthors">Authors</a>
+                        </li>
+                        <li>
+                            <a href="/Authors/AddAuthor">Add Author</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="@(ViewBag.Current == "Genre" ? "active" : "")">
+                    <a id="Genre" href="#GenreSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle ">Genre</a>
+                    <ul class="collapse list-unstyled" id="GenreSubmenu">
+                        <li >
+                            <a href="/Genres/GetGenres">Genres</a>
+                        </li>
+                        <li>
+                            <a href="/Genres/AddGenre">Add Genre</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        </nav>
+        <!-- Page Content -->
+
+        <div id="content">
+			
+					<button type="button" id="sidebarCollapse" class="navbar-btn">
+						<span></span>
+						<span></span>
+						<span></span>
+					</button>
+
+			<div class="mt-4">
+				@RenderBody()
+			</div>
+
+
+        </div>
+    </div>
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js"></script>
+    <script src="_Layout.cshtml.js"></script>
+    @if (ViewData["Active"] != null)
+{
+    <script type="text/javascript">document.getElementById("@ViewData["Active"]").classList.add("active")</script>
+}
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+
+
+
+
+
+
